@@ -24,6 +24,9 @@
                 <a href="{{ route('subjects.index') }}" class="text-slate-300 hover:text-white">
                     Unidades Curriculares
                 </a>
+                <a href="{{ route('teachers.index') }}" class="text-slate-300 hover:text-white">
+                    Professores
+                </a>
             </nav>
         </div>
     </header>
