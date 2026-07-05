@@ -21,6 +21,9 @@
                 <a href="{{ route('specialties.index') }}" class="text-slate-300 hover:text-white">
                     Especialidades
                 </a>
+                <a href="{{ route('subjects.index') }}" class="text-slate-300 hover:text-white">
+                    Unidades Curriculares
+                </a>
             </nav>
         </div>
     </header>
