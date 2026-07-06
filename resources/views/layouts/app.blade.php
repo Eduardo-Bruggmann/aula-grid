@@ -27,6 +27,9 @@
                 <a href="{{ route('teachers.index') }}" class="text-slate-300 hover:text-white">
                     Professores
                 </a>
+                <a href="{{ route('school-classes.index') }}" class="text-slate-300 hover:text-white">
+                    Turmas
+                </a>
             </nav>
         </div>
     </header>
