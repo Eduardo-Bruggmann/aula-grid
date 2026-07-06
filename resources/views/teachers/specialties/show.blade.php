@@ -39,11 +39,6 @@
     </div>
 
     <div class="mt-6 flex gap-3">
-        <a href="{{ route('teachers.specialties.index', $teacher) }}"
-        class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded">
-            Gerenciar especialidades
-        </a>
-
         <a href="{{ route('teachers.edit', $teacher) }}" class="bg-yellow-600 hover:bg-yellow-500 px-4 py-2 rounded">
             Editar
         </a>
