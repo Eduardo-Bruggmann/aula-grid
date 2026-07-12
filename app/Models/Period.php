@@ -34,4 +34,26 @@ class Period extends Model
     {
         return $this->hasMany(AllocationConflict::class);
     }
+
+    public function getWeekdayLabelAttribute(): string
+    {
+        return match ($this->weekday) {
+            1 => 'Segunda-feira',
+            2 => 'Terça-feira',
+            3 => 'Quarta-feira',
+            4 => 'Quinta-feira',
+            5 => 'Sexta-feira',
+            default => 'Desconhecido',
+        };
+    }
+
+    public function getShiftLabelAttribute(): string
+    {
+        return match ($this->shift) {
+            'morning' => 'Manhã',
+            'afternoon' => 'Tarde',
+            'night' => 'Noite',
+            default => 'Desconhecido',
+        };
+    }
 }

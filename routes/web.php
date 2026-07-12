@@ -7,6 +7,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SchoolClassController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherSpecialtyController;
+use App\Http\Controllers\TeacherAvailabilityController;
 
 Route::get('/', fn() => redirect()->route('school-units.index'));
 
@@ -25,3 +26,13 @@ Route::prefix('teachers/{teacher}')
             ])
             ->except(['show']);
     });
+
+Route::get(
+    '/teachers/{teacher}/availability',
+    [TeacherAvailabilityController::class, 'edit']
+)->name('teachers.availability.edit');
+
+Route::put(
+    '/teachers/{teacher}/availability',
+    [TeacherAvailabilityController::class, 'update']
+)->name('teachers.availability.update');

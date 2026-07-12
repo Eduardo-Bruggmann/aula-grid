@@ -44,6 +44,13 @@
             Gerenciar especialidades
         </a>
 
+        <a
+            href="{{ route('teachers.availability.edit', $teacher) }}"
+            class="bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded"
+        >
+            Gerenciar disponibilidade
+        </a>
+
         <a href="{{ route('teachers.edit', $teacher) }}" class="bg-yellow-600 hover:bg-yellow-500 px-4 py-2 rounded">
             Editar
         </a>
