@@ -10,7 +10,7 @@
 <body class="bg-slate-950 text-slate-100 min-h-screen">
     <header class="border-b border-slate-800 bg-slate-900">
         <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="{{ route('school-units.index') }}" class="font-bold text-xl">
+            <a href="{{ route('dashboard') }}" class="font-bold text-xl">
                 AulaGrid
             </a>
 

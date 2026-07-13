@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchoolUnitController;
 use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\SubjectController;
@@ -9,7 +10,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherSpecialtyController;
 use App\Http\Controllers\TeacherAvailabilityController;
 
-Route::get('/', fn() => redirect()->route('school-units.index'));
+Route::get('/', DashboardController::class)->name('dashboard');
 
 Route::resource('school-units', SchoolUnitController::class);
 Route::resource('specialties', SpecialtyController::class);
