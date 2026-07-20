@@ -17,7 +17,7 @@ class AllocationRun extends Model
     ];
 
     protected $casts = [
-        'score' => 'integer',
+        'score' => 'float',
         'total_allocations' => 'integer',
         'total_conflicts' => 'integer',
         'started_at' => 'datetime',

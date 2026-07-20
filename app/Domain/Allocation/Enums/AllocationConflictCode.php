@@ -12,6 +12,7 @@ enum AllocationConflictCode: string
     case SCHOOL_CLASS_ALREADY_ALLOCATED = 'SCHOOL_CLASS_ALREADY_ALLOCATED';
     case TEACHER_WEEKLY_LIMIT_EXCEEDED = 'TEACHER_WEEKLY_LIMIT_EXCEEDED';
     case TEACHER_DAILY_LIMIT_EXCEEDED = 'TEACHER_DAILY_LIMIT_EXCEEDED';
+    case NO_VALID_CANDIDATE = 'NO_VALID_CANDIDATE';
 
     public function message(): string
     {
@@ -39,6 +40,9 @@ enum AllocationConflictCode: string
 
             self::TEACHER_DAILY_LIMIT_EXCEEDED =>
             'O professor atingiu o limite diário de períodos.',
+
+            self::NO_VALID_CANDIDATE =>
+            'Nenhum professor válido foi encontrado para completar a alocação.',
         };
     }
 }

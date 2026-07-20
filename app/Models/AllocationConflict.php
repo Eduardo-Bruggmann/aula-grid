@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Domain\Allocation\Enums\AllocationConflictCode;
 
 class AllocationConflict extends Model
 {
@@ -14,6 +15,10 @@ class AllocationConflict extends Model
         'period_id',
         'reason_code',
         'reason_description',
+    ];
+
+    protected $casts = [
+        'reason_code' => AllocationConflictCode::class,
     ];
 
     public function allocationRun(): BelongsTo
