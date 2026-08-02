@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('status')->default('pending');
-            $table->integer('score')->default(0);
+            $table->decimal('score', 5, 2)->default(0);
             $table->unsignedInteger('total_allocations')->default(0);
             $table->unsignedInteger('total_conflicts')->default(0);
 

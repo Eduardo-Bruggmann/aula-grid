@@ -54,6 +54,12 @@ class SpecialtyController extends Controller
 
     public function destroy(Specialty $specialty): RedirectResponse
     {
+        if ($specialty->subjects()->exists() || $specialty->teacherSpecialties()->exists()) {
+            return redirect()
+                ->route('specialties.index')
+                ->with('error', 'Não é possível remover esta especialidade porque ela está vinculada a unidades curriculares ou professores.');
+        }
+
         $specialty->delete();
 
         return redirect()

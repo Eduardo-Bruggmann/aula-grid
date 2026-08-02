@@ -18,8 +18,9 @@
         @csrf
         @method('PUT')
 
-        <div class="bg-slate-900 border border-slate-800 rounded overflow-hidden">
-            <table class="w-full">
+        <div class="overflow-hidden rounded border border-slate-800 bg-slate-900">
+            <div class="overflow-x-auto">
+            <table class="min-w-[44rem] w-full">
                 <thead class="bg-slate-800">
                     <tr>
                         <th class="text-left px-4 py-3">Código</th>
@@ -62,6 +63,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
 
         @error('periods')
@@ -72,7 +74,7 @@
             <p class="text-red-400 mt-3">{{ $message }}</p>
         @enderror
 
-        <div class="mt-6 flex gap-3">
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <button
                 type="submit"
                 class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded"

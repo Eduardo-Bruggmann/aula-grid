@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex items-center justify-between mb-6">
+    <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
             <h1 class="text-2xl font-bold">Especialidades de {{ $teacher->name }}</h1>
             <p class="text-slate-400">
@@ -11,13 +11,14 @@
         </div>
 
         <a href="{{ route('teachers.specialties.create', $teacher) }}"
-           class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded">
+           class="inline-flex w-full items-center justify-center rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-500 sm:w-auto">
             Vincular especialidade
         </a>
     </div>
 
-    <div class="bg-slate-900 border border-slate-800 rounded overflow-hidden">
-        <table class="w-full">
+    <div class="overflow-hidden rounded border border-slate-800 bg-slate-900">
+        <div class="overflow-x-auto">
+        <table class="min-w-[42rem] w-full">
             <thead class="bg-slate-800">
                 <tr>
                     <th class="text-left px-4 py-3">Especialidade</th>
@@ -68,9 +69,10 @@
                 @endforelse
             </tbody>
         </table>
+        </div>
     </div>
 
-    <div class="mt-6 flex gap-3">
+    <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <a href="{{ route('teachers.show', $teacher) }}"
            class="px-4 py-2 rounded bg-slate-800">
             Voltar ao professor

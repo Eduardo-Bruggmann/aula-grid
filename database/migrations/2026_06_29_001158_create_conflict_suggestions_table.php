@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignId('teacher_id')
                 ->constrained('teachers')
                 ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+                ->restrictOnDelete();
 
             $table->integer('suggestion_score')->default(0);
             $table->text('reason');

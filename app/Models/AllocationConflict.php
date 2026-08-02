@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use App\Domain\Allocation\Enums\AllocationConflictCode;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Domain\Allocation\Enums\AllocationConflictCode;
 
 class AllocationConflict extends Model
 {
@@ -15,6 +15,7 @@ class AllocationConflict extends Model
         'period_id',
         'reason_code',
         'reason_description',
+        'status',
     ];
 
     protected $casts = [

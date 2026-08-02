@@ -6,7 +6,7 @@
         <p class="text-slate-400">Detalhes da unidade SENAI.</p>
     </div>
 
-    <div class="bg-slate-900 border border-slate-800 rounded p-6 max-w-xl">
+    <div class="max-w-xl break-words rounded border border-slate-800 bg-slate-900 p-6">
         <p><strong>ID:</strong> {{ $specialty->id }}</p>
         <p><strong>Nome:</strong> {{ $specialty->name }}</p>
         <p><strong>Descrição:</strong> {{ $specialty->description }}</p>
@@ -14,7 +14,7 @@
         <p><strong>Atualizada em:</strong> {{ $specialty->updated_at->format('d/m/Y H:i') }}</p>
     </div>
 
-    <div class="mt-6 flex gap-3">
+    <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <a href="{{ route('specialties.edit', $specialty) }}" class="bg-yellow-600 hover:bg-yellow-500 px-4 py-2 rounded">
             Editar
         </a>

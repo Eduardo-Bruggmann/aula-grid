@@ -35,7 +35,7 @@ return new class extends Migration
                 ->restrictOnDelete();
 
             $table->string('status')->default('generated');
-            $table->integer('score')->default(0);
+            $table->decimal('score', 5, 2)->default(0);
 
             $table->timestamps();
 

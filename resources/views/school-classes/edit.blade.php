@@ -9,7 +9,7 @@
 
         @include('school-classes._form')
 
-        <div class="flex gap-3">
+        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <button type="submit" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded">
                 Atualizar
             </button>

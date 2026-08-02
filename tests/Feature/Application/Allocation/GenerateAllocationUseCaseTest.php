@@ -7,7 +7,6 @@ use App\Domain\Allocation\Services\AllocationEngine;
 use App\Domain\Allocation\Services\AllocationScorer;
 use App\Domain\Allocation\Services\AllocationValidator;
 use App\Domain\Allocation\Services\CandidateFinder;
-use App\Models\AllocationRun;
 use App\Models\Period;
 use App\Models\SchoolClass;
 use App\Models\SchoolUnit;
@@ -29,7 +28,7 @@ class GenerateAllocationUseCaseTest extends TestCase
     {
         parent::setUp();
 
-        $validator = new AllocationValidator();
+        $validator = new AllocationValidator;
 
         $candidateFinder = new CandidateFinder(
             $validator
@@ -37,7 +36,7 @@ class GenerateAllocationUseCaseTest extends TestCase
 
         $engine = new AllocationEngine(
             $candidateFinder,
-            new AllocationScorer(),
+            new AllocationScorer,
         );
 
         $this->useCase = new GenerateAllocationUseCase(
@@ -101,6 +100,7 @@ class GenerateAllocationUseCaseTest extends TestCase
             'school_class_id' => $scenario['schoolClass']->id,
             'period_id' => $scenario['period']->id,
             'reason_code' => 'NO_VALID_CANDIDATE',
+            'status' => 'open',
         ]);
 
         $this->assertDatabaseCount('allocations', 0);

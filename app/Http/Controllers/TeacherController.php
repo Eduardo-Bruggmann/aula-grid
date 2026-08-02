@@ -15,6 +15,7 @@ class TeacherController extends Controller
     {
         $teachers = Teacher::query()
             ->with('schoolUnit')
+            ->withExists(['allocations', 'conflictSuggestions'])
             ->orderBy('name')
             ->paginate(10);
 
@@ -66,10 +67,27 @@ class TeacherController extends Controller
 
     public function destroy(Teacher $teacher): RedirectResponse
     {
+        if ($teacher->allocations()->exists() || $teacher->conflictSuggestions()->exists()) {
+            return redirect()
+                ->route('teachers.index')
+                ->with('error', 'Não é possível remover este professor porque ele possui histórico de alocações. Inative o professor para removê-lo de novas alocações.');
+        }
+
         $teacher->delete();
 
         return redirect()
             ->route('teachers.index')
             ->with('success', 'Professor removido com sucesso.');
+    }
+
+    public function deactivate(Teacher $teacher): RedirectResponse
+    {
+        $teacher->update([
+            'is_active' => false,
+        ]);
+
+        return redirect()
+            ->route('teachers.index')
+            ->with('success', 'Professor inativado com sucesso. Ele não será considerado em novas alocações.');
     }
 }

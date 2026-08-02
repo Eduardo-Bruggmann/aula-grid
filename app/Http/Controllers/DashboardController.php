@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AllocationRun;
 use App\Models\SchoolClass;
 use App\Models\SchoolUnit;
 use App\Models\Subject;
@@ -45,7 +46,7 @@ class DashboardController extends Controller
             ->where('is_active', true)
             ->whereDoesntHave(
                 'availabilities',
-                fn(Builder $query) => $query->where('is_available', true)
+                fn (Builder $query) => $query->where('is_available', true)
             )
             ->count();
 
@@ -53,7 +54,7 @@ class DashboardController extends Controller
             ->where('is_active', true)
             ->whereDoesntHave(
                 'subject.specialty.teachers',
-                fn(Builder $query) => $query->where('teachers.is_active', true)
+                fn (Builder $query) => $query->where('teachers.is_active', true)
             )
             ->count();
 
@@ -83,6 +84,10 @@ class DashboardController extends Controller
             ->limit(5)
             ->get();
 
+        $latestAllocationRun = AllocationRun::query()
+            ->latest('created_at')
+            ->first();
+
         return view('dashboard', compact(
             'activeTeachersCount',
             'activeSchoolClassesCount',
@@ -98,6 +103,7 @@ class DashboardController extends Controller
             'inactiveTeachersCount',
             'recentTeachers',
             'recentSchoolClasses',
+            'latestAllocationRun',
         ));
     }
 }

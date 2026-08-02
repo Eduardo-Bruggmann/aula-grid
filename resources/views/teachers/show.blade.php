@@ -6,7 +6,7 @@
         <p class="text-slate-400">Detalhes do professor.</p>
     </div>
 
-    <div class="bg-slate-900 border border-slate-800 rounded p-6 max-w-2xl space-y-2">
+    <div class="max-w-2xl space-y-2 break-words rounded border border-slate-800 bg-slate-900 p-6">
         <p><strong>Matrícula:</strong> {{ $teacher->registration }}</p>
         <p><strong>Nome:</strong> {{ $teacher->name }}</p>
         <p><strong>E-mail:</strong> {{ $teacher->email ?? 'Não informado' }}</p>
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="mt-6 flex gap-3">
+    <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <a href="{{ route('teachers.specialties.index', $teacher) }}"
         class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded">
             Gerenciar especialidades
@@ -54,6 +54,21 @@
         <a href="{{ route('teachers.edit', $teacher) }}" class="bg-yellow-600 hover:bg-yellow-500 px-4 py-2 rounded">
             Editar
         </a>
+
+        @if ($teacher->is_active)
+            <form action="{{ route('teachers.deactivate', $teacher) }}" method="POST" class="inline">
+                @csrf
+                @method('PATCH')
+
+                <button
+                    type="submit"
+                    class="bg-red-600 hover:bg-red-500 px-4 py-2 rounded"
+                    onclick="return confirm('Inativar este professor? Ele não será considerado em novas alocações.')"
+                >
+                    Inativar
+                </button>
+            </form>
+        @endif
 
         <a href="{{ route('teachers.index') }}" class="px-4 py-2 rounded bg-slate-800">
             Voltar

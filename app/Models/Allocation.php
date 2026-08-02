@@ -17,7 +17,7 @@ class Allocation extends Model
     ];
 
     protected $casts = [
-        'score' => 'integer',
+        'score' => 'float',
     ];
 
     public function allocationRun(): BelongsTo
